@@ -1,10 +1,12 @@
+
 class Calculation
+
   def self.weight_of_certain_route(route_map, certain_route)
     current_index = 0
     weight = 0
     loop do
       break if current_index >= certain_route.length - 1
-      weight_tmp = route_map.weight_of_two_stations(certain_route[current_index], certain_route[current_index+1])
+      weight_tmp = route_map.weight_between_two_stations(certain_route[current_index], certain_route[current_index+1])
       weight = weight_tmp == -1 ? 'NO SUCH ROUTE' : weight + weight_tmp
       current_index += 1
     end
@@ -54,14 +56,14 @@ class Calculation
     end
     return if weight > @weight
     @route_map.next_stations(current_station).each do |station|
-      shortest_route(station, current_route + station , weight + @route_map.weight_of_two_stations(current_station, station))
+      shortest_route(station, current_route + station , weight + @route_map.weight_between_two_stations(current_station, station))
     end
   end
 
   def self.route_with_max_weight(current_station, current_route, weight)
     return if weight>= @max_weight
     @route_map.next_stations(current_station).each do |station|
-      route_with_max_weight(station, current_route + current_station, weight + @route_map.weight_of_two_stations(current_station, station))
+      route_with_max_weight(station, current_route + current_station, weight + @route_map.weight_between_two_stations(current_station, station))
     end
     @number_of_routes += 1 if current_station == @end_station && current_route != ''
   end

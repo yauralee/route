@@ -17,19 +17,19 @@ RSpec.describe RouteMap do
       it 'should return weight of these two stations if route exists' do
         station = 'A'
         next_station = 'B'
-        expect(route_map.weight_of_two_stations(station, next_station)).to eq(5)
+        expect(route_map.weight_between_two_stations(station, next_station)).to eq(5)
       end
 
       it 'should return -1 if station is not exists' do
         station = 'B'
         next_station = 'D'
-        expect(route_map.weight_of_two_stations(station, next_station)).to eq(-1)
+        expect(route_map.weight_between_two_stations(station, next_station)).to eq(-1)
       end
 
       it 'should return -1 if next station is not exists' do
         station = 'A'
         next_station = 'F'
-        expect(route_map.weight_of_two_stations(station, next_station)).to eq(-1)
+        expect(route_map.weight_between_two_stations(station, next_station)).to eq(-1)
       end
     end
   end

@@ -5,10 +5,7 @@ require 'service/read_route.rb'
   $number_of_route = 0
 
   def number_of_trips_with_max_weight(current_node, end_node, current_route, weight, max_weight)
-    if weight>= max_weight
-      return
-    end
-
+    return if weight>= max_weight
     $map[current_node].keys.each do |node|
       number_of_trips_with_max_weight(node, end_node, current_route+current_node, weight + $map[current_node][node], max_weight)
     end

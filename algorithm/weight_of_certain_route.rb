@@ -7,9 +7,7 @@ def weight_of_certain_route(certain_route)
   current_index = 1
   @weight = 0
   loop do
-    if current_index >= stops_number_of_route
-      break
-    end
+    break if current_index >= stops_number_of_route
     unless map[certain_route[current_index-1]].has_key? certain_route[current_index]
       @weight = 'NO SUCH ROUTE'
       break

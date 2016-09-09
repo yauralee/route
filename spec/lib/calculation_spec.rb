@@ -25,4 +25,16 @@ RSpec.describe Calculation do
       end
     end
   end
+  
+  describe '#number_of_routes_with_max_stops' do
+    context 'with max stop' do
+      it 'should return the number of routes between two stations' do
+        start_station = 'C'
+        end_station = 'C'
+        max_stop = 3
+        expect(Calculation.number_of_routes_with_max_stops(route_map,start_station,end_station,max_stop)).to eq(2)
+      end
+    end
+  end
 end
+

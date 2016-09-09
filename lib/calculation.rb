@@ -20,6 +20,14 @@ class Calculation
     @number_of_routes
   end
 
+  def self.weight_of_shortest_route(route_map, start_station, end_station)
+    @route_map = route_map
+    @end_station = end_station
+    @weight = 1000
+    find_shortest_route(start_station, '', 0)
+    @weight
+  end
+
  private
   def self.find_route_with_max_stop(current_station, current_stop)
     return if current_stop > @max_stop
@@ -27,5 +35,16 @@ class Calculation
       find_route_with_max_stop(station, current_stop + 1)
     end
     @number_of_routes += 1 if current_station == @end_station
+  end
+
+  def self.find_shortest_route(current_station, current_route, weight)
+    if current_station == @end_station && current_route != ''
+      @weight = weight if weight < @weight
+      return
+    end
+    return if weight > @weight
+    @route_map.next_stations(current_station).each do |station|
+      find_shortest_route(station, current_route + station , weight + @route_map.weight_of_two_stations(current_station, station))
+    end
   end
 end

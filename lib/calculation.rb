@@ -16,7 +16,7 @@ class Calculation
     @max_stop = max_stop
     @end_station = end_station
     @route_map = route_map
-    find_route_with_max_stop(start_station, 1)
+    route_with_max_stop(start_station, 1)
     @number_of_routes
   end
 
@@ -24,27 +24,45 @@ class Calculation
     @route_map = route_map
     @end_station = end_station
     @weight = 1000
-    find_shortest_route(start_station, '', 0)
+    shortest_route(start_station, '', 0)
     @weight
   end
 
+  def self.number_of_routes_with_max_weight(route_map, start_station, end_station, max_weight)
+    @number_of_routes = 0
+    @route_map = route_map
+    @end_station = end_station
+    @max_weight = max_weight
+    route_with_max_weight(start_station,'', 0)
+    @number_of_routes
+  end
+
  private
-  def self.find_route_with_max_stop(current_station, current_stop)
+
+  def self.route_with_max_stop(current_station, current_stop)
     return if current_stop > @max_stop
     @route_map.next_stations(current_station).each do |station|
-      find_route_with_max_stop(station, current_stop + 1)
+      route_with_max_stop(station, current_stop + 1)
     end
     @number_of_routes += 1 if current_station == @end_station
   end
 
-  def self.find_shortest_route(current_station, current_route, weight)
+  def self.shortest_route(current_station, current_route, weight)
     if current_station == @end_station && current_route != ''
       @weight = weight if weight < @weight
       return
     end
     return if weight > @weight
     @route_map.next_stations(current_station).each do |station|
-      find_shortest_route(station, current_route + station , weight + @route_map.weight_of_two_stations(current_station, station))
+      shortest_route(station, current_route + station , weight + @route_map.weight_of_two_stations(current_station, station))
     end
+  end
+
+  def self.route_with_max_weight(current_station, current_route, weight)
+    return if weight>= @max_weight
+    @route_map.next_stations(current_station).each do |station|
+      route_with_max_weight(station, current_route + current_station, weight + @route_map.weight_of_two_stations(current_station, station))
+    end
+    @number_of_routes += 1 if current_station == @end_station && current_route != ''
   end
 end

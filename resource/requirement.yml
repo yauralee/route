@@ -1,0 +1,26 @@
+1:
+  requirement: lengthOfPath
+  condition: null
+  calParams:
+    - {path: ABC}
+    - {path: AD}
+    - {path: ADC}
+    - {path: AEBCD}
+    - {path: AED}
+2:
+  requirement: numberOfPath
+  condition: lessThanCertainSteps
+  calParams:
+    - {startStaion: C, endStation: C, maxStep: 3}
+    - {startStaion: C, endStation: C, maxStep: 3}
+3:
+  requirement: lengthOfPath
+  condition: shortest
+  calParams:
+    - {startStaion: A, endStation: C}
+    - {startStaion: B, endStation: B}
+4:
+  requirement: numberOfPath
+  condition: lessThanCertainLength
+  calParams:
+    - {startStation: C, endStation: C, maxLength: 30}

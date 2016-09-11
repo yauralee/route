@@ -14,7 +14,7 @@ class Calculator
         params_for_send = [route_map, path]
         condition = prepare_for_send[situation].values[0]
         params_for_send << requirement_and_condition[situation][condition] if condition != ''
-        @calculate_result_array << Calculator.send(prepare_for_send[situation].keys[0], *params_for_send).to_s
+        @calculate_result_array << send(prepare_for_send[situation].keys[0], *params_for_send).to_s
         counter += 1
       end
     end

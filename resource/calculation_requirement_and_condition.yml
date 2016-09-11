@@ -1,24 +1,24 @@
-1:
-  requirement: lengthOfPath
-  path:
-    - ABC
-    - AD
-    - ADC
-    - AEBCD
-    - AED
-2:
-  requirement: numberOfPath
-  maxStops: 3
-  path:
-    - CC
-    - AE
-3:
-  requirement: shortestLengthOfPath
-  path:
-    - AC
-    - BB
-4:
-  requirement: numberOfPath
-  maxLength: 30
-  path:
-    - CC
+situation_1:
+    requirement: lengthOfPath
+    path:
+      - ABC
+      - AD
+      - ADC
+      - AEBCD
+      - AED
+situation_2:
+    requirement: numberOfPath
+    maxStop: 3
+    path:
+      - CC
+      - AE
+situation_3:
+    requirement: shortestLengthOfPath
+    path:
+      - AC
+      - BB
+situation_4:
+    requirement: numberOfPath
+    maxLength: 30
+    path:
+      - CC

@@ -1,10 +1,25 @@
 class Calculator
 
-  # @route_map
+  @calculate_result_array = []
 
-  # def self.prepare_for_output(route_map)
-  #   @route_map = route_map
-  # end
+  def self.calculate_results(route_map, requirement_and_condition)
+    counter = 1
+    prepare_for_send = {'situation_1' => {:weight_of_certain_route => ''},
+                        'situation_2' => {:number_of_routes_with_max_stops => 'maxStop'},
+                        'situation_3' => {:weight_of_shortest_route => ''},
+                        'situation_4' => {:number_of_routes_with_max_weight => 'maxLength'}
+    }
+    prepare_for_send.keys.each do |situation|
+      requirement_and_condition[situation]['path'].each do |path|
+        params_for_send = [route_map, path]
+        condition = prepare_for_send[situation].values[0]
+        params_for_send << requirement_and_condition[situation][condition] if condition != ''
+        @calculate_result_array << Calculator.send(prepare_for_send[situation].keys[0], *params_for_send).to_s
+        counter += 1
+      end
+    end
+    @calculate_result_array
+  end
 
   def self.weight_of_certain_route(route_map, certain_route)
     weight = 0

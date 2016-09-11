@@ -15,10 +15,10 @@ RSpec.describe InputParser, type: :parser do
     context 'with calculation requirement' do
       it 'should return parsed requirement' do
         file_name = 'resource/calculation_requirement_and_condition.yml'
-        params = {1 => {"requirement"=>"lengthOfPath", "calParams"=>["ABC", "AD", "ADC", "AEBCD", "AED"]},
-                  2 => {"requirement"=>"numberOfPath", "maxStops"=>3, "path"=>["CC", "AE"]},
-                  3 => {"requirement"=>"shortestLengthOfPath", "path"=>["AC", "BB"]},
-                  4 => {"requirement"=>"numberOfPath", "maxLength"=>30, "path"=>["CC"]}}
+        params = {"situation_1" => {"requirement"=>"lengthOfPath", "path"=>["ABC", "AD", "ADC", "AEBCD", "AED"]},
+                  "situation_2" => {"requirement"=>"numberOfPath", "maxStop"=>3, "path"=>["CC", "AE"]},
+                  "situation_3" => {"requirement"=>"shortestLengthOfPath", "path"=>["AC", "BB"]},
+                  "situation_4" => {"requirement"=>"numberOfPath", "maxLength"=>30, "path"=>["CC"]}}
         expect(InputParser.yaml_parser(file_name)).to eq(params)
       end
     end

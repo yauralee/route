@@ -10,6 +10,12 @@ RSpec.describe Calculator do
        'E' => {'B' => 3}
       }
   )}
+  let(:requirement_and_condition) {
+    {"situation_1" => {"requirement"=>"lengthOfPath", "path"=>["ABC", "AD", "ADC", "AEBCD", "AED"]},
+     "situation_2" => {"requirement"=>"numberOfPath", "maxStop"=>3, "path"=>["CC", "AE"]},
+     "situation_3" => {"requirement"=>"shortestLengthOfPath", "path"=>["AC", "BB"]},
+     "situation_4" => {"requirement"=>"numberOfPath", "maxLength"=>30, "path"=>["CC"]}}
+  }
   describe '#weight_of_certain_route' do
     context 'with a right route' do
       it 'should return weight' do
@@ -51,6 +57,15 @@ RSpec.describe Calculator do
         start_and_end_station = 'CC'
         max_weight = 30
         expect(Calculator.number_of_routes_with_max_weight(route_map, start_and_end_station, max_weight)).to eq(7)
+      end
+    end
+  end
+
+  describe '#calculate_results' do
+    context 'with route map and calculation requirement and condition' do
+      it 'should return the calculate results of each situation' do
+        result_array = ["9", "5", "13", "22", "NO SUCH ROUTE", "2", "2", "9", "9", "7"]
+        expect(Calculator.calculate_results(route_map, requirement_and_condition)).to eq(result_array)
       end
     end
   end

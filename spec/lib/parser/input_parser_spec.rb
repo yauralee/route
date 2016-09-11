@@ -15,10 +15,10 @@ RSpec.describe InputParser, type: :parser do
     context 'with calculation requirement' do
       it 'should return parsed requirement' do
         file_name = 'resource/requirement.yml'
-        params = {1=>{"requirement"=>"lengthOfPath", "condition"=>nil, "calParams"=>[{"path"=>"ABC"}, {"path"=>"AD"}, {"path"=>"ADC"}, {"path"=>"AEBCD"}, {"path"=>"AED"}]},
-                  2=>{"requirement"=>"numberOfPath", "condition"=>"lessThanCertainStops", "calParams"=>[{"startStation"=>"C", "endStation"=>"C", "maxStop"=>3}, {"startStation"=>"A", "endStation"=>"E", "maxStop"=>3}]},
-                  3=>{"requirement"=>"lengthOfPath", "condition"=>"shortest", "calParams"=>[{"startStation"=>"A", "endStation"=>"C"}, {"startStation"=>"B", "endStation"=>"B"}]},
-                  4=>{"requirement"=>"numberOfPath", "condition"=>"lessThanCertainLength", "calParams"=>[{"startStation"=>"C", "endStation"=>"C", "maxLength"=>30}]}}
+        params = {1 => {"requirement"=>"lengthOfPath", "calParams"=>["ABC", "AD", "ADC", "AEBCD", "AED"]},
+                  2 => {"requirement"=>"numberOfPath", "maxStops"=>3, "path"=>["CC", "AE"]},
+                  3 => {"requirement"=>"shortestLengthOfPath", "path"=>["AC", "BB"]},
+                  4 => {"requirement"=>"numberOfPath", "maxLength"=>30, "path"=>["CC"]}}
         expect(InputParser.yaml_parser(file_name)).to eq(params)
       end
     end

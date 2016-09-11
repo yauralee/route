@@ -6,4 +6,3 @@ class InputParser
   end
 end
 
-# p InputParser.yaml_parser('../../resource/route.yml')

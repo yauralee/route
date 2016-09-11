@@ -7,4 +7,4 @@ group :development, :test do
 end
 
 gem 'rake'
-# gem 'require_all'
+gem 'require_all'

@@ -1,10 +1,6 @@
-# require './calculator'
-# require './route_mapper'
-# require './printer'
-# require './parser/input_parser'
-Dir["#{File.dirname(__FILE__)}/*/*.rb"].each {|file| require file }
-Dir["#{File.dirname(__FILE__)}/*.rb"].each {|file| require file }
-
+# Dir["#{File.dirname(__FILE__)}/*/*.rb", "#{File.dirname(__FILE__)}/*.rb"].each {|file| require file }
+require 'require_all'
+require_all 'lib'
 class ProcessHandler
   def self.process(routes_yml, requirement_yml)
     parsed_routes = InputParser.yaml_parser(routes_yml)
@@ -13,5 +9,3 @@ class ProcessHandler
     Printer.new(requirement).process_output(route_map)
   end
 end
-
-# ProcessHandler.process('../resource/route.yml', '../resource/requirement.yml')

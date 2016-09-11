@@ -1,7 +1,5 @@
-require 'printer'
-require 'calculator'
-require 'route_mapper'
-require 'parser/input_parser'
+require 'require_all'
+require_all 'lib/printer', 'lib/calculator', 'lib/route_mapper', 'lib/parser/input_parser'
 
 RSpec.describe Printer do
   let(:printer) { Printer.new(InputParser.yaml_parser('resource/requirement.yml')) }

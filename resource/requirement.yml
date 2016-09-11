@@ -9,16 +9,16 @@
     - {path: AED}
 2:
   requirement: numberOfPath
-  condition: lessThanCertainSteps
+  condition: lessThanCertainStops
   calParams:
-    - {startStaion: C, endStation: C, maxStep: 3}
-    - {startStaion: C, endStation: C, maxStep: 3}
+    - {startStation: C, endStation: C, maxStop: 3}
+    - {startStation: A, endStation: E, maxStop: 3}
 3:
   requirement: lengthOfPath
   condition: shortest
   calParams:
-    - {startStaion: A, endStation: C}
-    - {startStaion: B, endStation: B}
+    - {startStation: A, endStation: C}
+    - {startStation: B, endStation: B}
 4:
   requirement: numberOfPath
   condition: lessThanCertainLength

@@ -1,9 +1,9 @@
 require 'yaml'
 
 class InputParser
-  def self.parsed_yaml(file_name)
+  def self.yaml_parser(file_name)
     YAML.load_file(file_name)
   end
 end
 
-# p RequirementParser.parsed_requirement
+# p InputParser.yaml_parser('../../resource/route.yml')

@@ -1,6 +1,6 @@
 1:
   requirement: lengthOfPath
-  calParams:
+  path:
     - ABC
     - AD
     - ADC

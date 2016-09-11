@@ -29,10 +29,9 @@ RSpec.describe Calculator do
   describe '#number_of_routes_with_max_stops' do
     context 'with max stop' do
       it 'should return the number of routes between two stations' do
-        start_station = 'C'
-        end_station = 'C'
+        start_and_end_station = 'CC'
         max_stop = 3
-        expect(Calculator.number_of_routes_with_max_stops(route_map,start_station,end_station,max_stop)).to eq(2)
+        expect(Calculator.number_of_routes_with_max_stops(route_map, start_and_end_station, max_stop)).to eq(2)
       end
     end
   end
@@ -40,9 +39,8 @@ RSpec.describe Calculator do
   describe '#weight_of_shortest_route' do
     context 'with two stations' do
       it 'should return weight of the shortest route' do
-        start_station = 'A'
-        end_station = 'C'
-        expect(Calculator.weight_of_shortest_route(route_map,start_station,end_station)).to eq(9)
+        start_and_end_station = 'AC'
+        expect(Calculator.weight_of_shortest_route(route_map, start_and_end_station)).to eq(9)
       end
     end
   end
@@ -50,10 +48,9 @@ RSpec.describe Calculator do
   describe '#number_of_routes_with_max_weight' do
     context 'with max weight' do
       it 'should return numbers of route between two stations' do
-        start_station = 'C'
-        end_station = 'C'
+        start_and_end_station = 'CC'
         max_weight = 30
-        expect(Calculator.number_of_routes_with_max_weight(route_map,start_station,end_station,max_weight)).to eq(7)
+        expect(Calculator.number_of_routes_with_max_weight(route_map, start_and_end_station, max_weight)).to eq(7)
       end
     end
   end

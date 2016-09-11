@@ -14,7 +14,7 @@ RSpec.describe InputParser, type: :parser do
   describe '#requirement' do
     context 'with calculation requirement' do
       it 'should return parsed requirement' do
-        file_name = 'resource/requirement.yml'
+        file_name = 'resource/calculation_requirement_and_condition.yml'
         params = {1 => {"requirement"=>"lengthOfPath", "calParams"=>["ABC", "AD", "ADC", "AEBCD", "AED"]},
                   2 => {"requirement"=>"numberOfPath", "maxStops"=>3, "path"=>["CC", "AE"]},
                   3 => {"requirement"=>"shortestLengthOfPath", "path"=>["AC", "BB"]},

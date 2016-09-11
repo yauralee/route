@@ -2,7 +2,7 @@ require 'require_all'
 require_all 'lib/printer', 'lib/calculator', 'lib/route_mapper', 'lib/parser/input_parser'
 
 RSpec.describe Printer do
-  let(:printer) { Printer.new(InputParser.yaml_parser('resource/requirement.yml')) }
+  let(:printer) { Printer.new(InputParser.yaml_parser('resource/calculation_requirement_and_condition.yml')) }
   let(:route_map) { RouteMapper.new(InputParser.yaml_parser('resource/route.yml')) }
   describe '#process_output' do
     context 'with route map' do

@@ -1,6 +1,6 @@
-# Dir["#{File.dirname(__FILE__)}/*/*.rb", "#{File.dirname(__FILE__)}/*.rb"].each {|file| require file }
 require 'require_all'
 require_all 'lib'
+
 class ProcessHandler
   def self.process(routes_yml, requirement_yml)
     parsed_routes = InputParser.yaml_parser(routes_yml)

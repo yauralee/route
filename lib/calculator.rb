@@ -4,13 +4,10 @@ class Calculator
     weight = 0
     (0..certain_route.length-2).each do |index|
       weight_tmp = route_map.weight_between_two_stations(certain_route[index], certain_route[index+1])
-      if weight_tmp == -1
-        weight = -1
-        break
-      end
+      break weight = -1 if weight_tmp == -1
       weight += weight_tmp
     end
-    weight==-1 ? 'NO SUCH ROUTE' : weight
+    weight == -1 ? 'NO SUCH ROUTE' : weight
   end
 
   def self.number_of_routes_with_max_stops(route_map, start_station, end_station, max_stop)
